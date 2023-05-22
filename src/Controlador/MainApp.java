@@ -19,7 +19,11 @@ public class MainApp extends Application {
     private BorderPane rootLayout;
     //
     private ObservableList<Person> personData = FXCollections.observableArrayList();
-    public MainApp() {
+
+	/**
+	 * Constructor
+	 */
+	public MainApp() {
 		// Add some sample data
 		personData.add(new Person("Hans", "Muster"));
 		personData.add(new Person("Ruth", "Mueller"));
@@ -44,7 +48,7 @@ public class MainApp extends Application {
     
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("AddressApp");
+        this.primaryStage.setTitle("ProjectFxProject");
 
         initRootLayout();
 
@@ -77,7 +81,7 @@ public class MainApp extends Application {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
+            loader.setLocation(MainApp.class.getResource("/Vista/PersonOverview.fxml"));
             AnchorPane personOverview = (AnchorPane) loader.load();
     
             // Set person overview into the center of root layout.

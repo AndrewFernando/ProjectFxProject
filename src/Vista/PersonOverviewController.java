@@ -29,7 +29,7 @@ public class PersonOverviewController {
     private Label birthdayLabel;
 
     // Reference to the main application.
-    private MainApp MainApp;
+    private MainApp mainApp;
 
     /**
      * The constructor.
@@ -54,10 +54,10 @@ public class PersonOverviewController {
      * 
      * @param mainApp
      */
-    public void setMainApp(MainApp MainApp) {
-        this.MainApp = MainApp;
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
 
         // Add observable list data to the table
-        personTable.setItems(MainApp.getPersonData());
+        personTable.setItems(mainApp.getPersonData());
     }
 }
