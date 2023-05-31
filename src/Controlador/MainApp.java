@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import Modelo.Person;
 import Vista.PersonEditDialogController;
 import Vista.PersonOverviewController;
+import Vista.BirthdayStatisticsController;
 
 public class MainApp extends Application {
     //
@@ -158,14 +159,33 @@ public class MainApp extends Application {
             primaryStage.setTitle("AddressApp");
         }
     }
-    
-	/**
-	 * Returns the main stage.
-	 * @return
-	 */
-	public Stage getPrimaryStage() {
-		return primaryStage;
-	}
+    public void showBirthdayStatistics() {
+        try {
+            // Load the fxml file and create a new stage for the popup.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/Vista/BirthdayStatistics.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Birthday Statistics");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the persons into the controller.
+            BirthdayStatisticsController controller = loader.getController();
+            controller.setPersonData(personData);
+
+            dialogStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
 
     public static void main(String[] args) {
         launch(args);
